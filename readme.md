@@ -4,7 +4,7 @@
 
 This project implements a complete ETL (Extract, Transform, Load) pipeline and interactive dashboard using the **City of Cambridge’s SeeClickFix (Commonwealth Connect)** data. It gives users — both **residents** and **city staff** — insight into the most common service requests submitted and provides predictive estimates of how long requests might take to resolve.
 
-The system automatically pulls fresh data daily, processes it, trains a model, and updates a live Streamlit dashboard.
+The system automatically pulls data daily, processes it, trains a model, and updates a live Streamlit dashboard.
 
 ## Purpose
 
@@ -13,7 +13,7 @@ Residents report issues like potholes, graffiti, or missed trash pickup through 
 - Displays request counts filtered by status and time range.
 - Predicts the **estimated time-to-close** for new requests based on issue type, day, month, and time.
 
-It helps city staff improve service delivery and gives the public visibility into government responsiveness using open data.
+It helps city staff understand service delivery and gives the public visibility into government responsiveness using open data.
 
 ## Features
 
@@ -30,7 +30,7 @@ It helps city staff improve service delivery and gives the public visibility int
 
 ## Data Source
 
-- **Dataset:** [Commonwealth Connect Service Requests](https://data.cambridgema.gov/)
+- **Dataset:** [Commonwealth Connect Service Requests](https://data.cambridgema.gov/Public-Works/Commonwealth-Connect-Service-Requests/2z9k-mv9g/about_data)
 - **API:** Socrata Open Data API (SODA)  
 - **CSV Endpoint:** `https://data.cambridgema.gov/resource/2z9k-mv9g.csv`
 - **Documentation:** [Socrata SODA API Docs](https://dev.socrata.com/)
@@ -51,7 +51,7 @@ The `transform.py` script processes and augments the raw service request data wi
 The `train_model.py` script trains a machine learning model to predict the estimated time to close service requests. Below are the details of the model:
 
 1. **Model Type**:  
-   - The model is a **Random Forest Regressor**, which is a robust and interpretable ensemble learning method.
+   - The model is a **Random Forest Regressor**.
 
 2. **Features Used**:  
    - **Categorical Features**:
@@ -78,7 +78,7 @@ The `train_model.py` script trains a machine learning model to predict the estim
 
 ```
 your-project-folder/
-├── .env                  # stores your API token securely
+├── .env                  # stores API token securely
 ├── Dockerfile            # builds app container
 ├── docker-compose.yml    # launches Prefect and Streamlit services
 ├── extract.py            # downloads latest data from Socrata API
@@ -94,13 +94,13 @@ your-project-folder/
 ### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/your-repo-link.git
-cd your-repo-link
+git clone https://github.com/leegianetti/dacss690a_finalproject.git
+cd your-repo-link #insert actual folder that will be used.
 ```
 
 ### 2. Create a `.env` File
 
-Add your Socrata app token (get one [here](https://dev.socrata.com/register/)):
+Add Socrata app token (get one [here](https://dev.socrata.com/register/)):
 
 ```
 SODA_APP_TOKEN=your_token_here
@@ -120,8 +120,8 @@ docker-compose up --build
 ```
 
 - This will launch:
-  - `prefect_etl`: runs your ETL + model training script
-  - `streamlit_app`: serves your dashboard at [http://localhost:8501](http://localhost:8501)
+  - `prefect_etl`: runs  ETL + model training script
+  - `streamlit_app`: serves  dashboard at [http://localhost:8501](http://localhost:8501)
 
 ## Automation & Scheduling
 
