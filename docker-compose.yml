@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  prefect-etl:
+    build: .
+    container_name: prefect_etl
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: python prefect_flow.py
+
+  streamlit-app:
+    build: .
+    container_name: streamlit_app
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    working_dir: /app
+    ports:
+      - "8501:8501"
+    command: streamlit run app.py

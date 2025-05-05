@@ -1,0 +1,24 @@
+# Data manipulation and analysis
+pandas
+numpy
+
+# Machine learning
+scikit-learn
+joblib
+
+# Web requests and environment variables
+requests
+python-dotenv
+
+# Streamlit for dashboard and visualization
+streamlit
+pydeck
+
+# Prefect for ETL orchestration
+prefect>=2.0
+prefect-shell
+
+
+
+
+
